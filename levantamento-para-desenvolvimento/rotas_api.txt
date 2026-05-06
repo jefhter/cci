@@ -1,0 +1,46 @@
+Autenticação
+POST /auth/login - Login de usuário
+POST /auth/register - Registro de novo usuário
+POST /auth/logout - Logout
+GET /auth/me - Obter dados do usuário logado
+
+Usuários (CRUD básico)
+GET /users - Listar todos os usuários
+GET /users/:id - Obter usuário específico
+POST /users - Criar novo usuário
+PUT /users/:id - Atualizar usuário
+DELETE /users/:id - Deletar usuário
+
+Papéis e Permissões
+GET /roles - Listar papéis
+POST /roles - Criar papel
+PUT /roles/:id - Atualizar papel
+DELETE /roles/:id - Deletar papel
+GET /permissions - Listar permissões
+POST /permissions - Criar permissão
+
+Extras (???)
+POST /auth/forgot-password - Solicitar redefinição de senha
+POST /auth/reset-password - Redefinir senha
+GET /users/profile - Obter perfil do usuário logado
+PUT /users/profile - Atualizar perfil do usuário logado
+GET /reports - Listar relatórios
+POST /reports/generate - Gerar relatório
+PUT /notifications/:id/read - Marcar notificação como lida
+GET /settings - Obter configurações do sistema
+PUT /settings - Atualizar configurações do sistema
+
+Frontend
+/ - Página inicial/dashboard
+/login - Página de login
+/register - Página de registro
+/forgot-password - Página de esqueci a senha
+/reset-password - Página de redefinir senha
+/users - Lista de usuários
+/users/:id - Detalhes/editar usuário
+/profile - Perfil do usuário
+/roles - Lista de papéis
+/permissions - Lista de permissões
+/products - Lista de produtos
+/products/:id - Detalhes/editar produto
+/settings - Configurações do sistema
