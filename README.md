@@ -54,12 +54,9 @@ O projeto atua como uma ponte fundamental para a extensão universitária, funda
 ## 📚 6. Referências Técnicas
  O desenvolvimento é guiado pelas seguintes referências bibliográficas do plano de ensino:
 
-### Básica
 * **Padrões de Projeto**: GAMMA, Erich; et al. *Padrões de projetos: soluções reutilizáveis de software orientados a objetos*.
 * **Qualidade de Código**: MARTIN, Robert C. *Código limpo: Habilidades práticas do Agile Software*.
 * **Linguagem**: BANIN, Sérgio L. *Python 3: Conceitos e Aplicações*.
-
-### Complementar
 * **Refatoração**: FOWLER, Martin. *Refatoração*.
 * **Banco de Dados**: KROENKE, David M. *Banco de dados: fundamentos, projeto e implementação*.
 * **Engenharia de Software**: PRESSMAN, Roger S.; MAXIM, Bruce R. *Engenharia de software*.
@@ -67,9 +64,9 @@ O projeto atua como uma ponte fundamental para a extensão universitária, funda
 
 ## 👥 7. Equipe (Grupo 4)
 
-* [Gabriel De Peder](https://github.com/nome)
+* [Gabriel De Peder](https://github.com/GabrielDPeder)
 * [Jefhter Rodrigues Cabral](https://github.com/jefhter)
-* [João Vitor Antoniel](https://github.com/nome)
-* [Samuel Penha Jacobsen](https://github.com/nome)
+* [João Vitor Antoniel](https://github.com/Batujao)
+* [Samuel Penha Jacobsen](https://github.com/samuelpjacobsen)
 
 ---
