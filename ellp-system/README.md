@@ -1,6 +1,10 @@
-# Turborepo starter
+# Prototype
 
-This Turborepo starter is maintained by the Turborepo core team.
+This is the Prototype of our project!
+
+### It`s in a form of a Turborepo 
+
+Yes! You can run it. Turborepo starter is maintained by the Turborepo core team.
 
 ## Using this example
 
@@ -146,10 +150,6 @@ npx turbo link
 pnpm exec turbo link
 pnpm exec turbo link
 ```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
 
 - [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
 - [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
