@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import pool from "../database/connection.js";
 import { generateToken } from "../middleware/auth.js";
-import type { AppRole } from "@ellp/types";
+import type { AppRole } from "../types.js";
 
 const router = Router();
 

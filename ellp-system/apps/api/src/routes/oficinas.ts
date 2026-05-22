@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import pool from "../database/connection.js";
 import { roleMiddleware } from "../middleware/auth.js";
-import type { JwtPayload } from "@ellp/types";
+import type { JwtPayload } from "../types.js";
 
 const router = Router();
 
