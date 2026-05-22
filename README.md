@@ -2,7 +2,7 @@
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-
+https://ellp-web.vercel.app/
 Uma plataforma de gestao educacional voltada para um projeto de ensino publico. O sistema automatiza o ciclo de vida de oficinas de programacao, desde o cadastro de turmas ate a aprovacao por frequencia.
 
 ## 1. Descricao do Sistema
