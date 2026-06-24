@@ -1,6 +1,13 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { api } from "./api";
 
 type AppRole = "admin" | "professor" | "tutor" | "pendente";
@@ -41,13 +48,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signIn = async (email: string, senha: string) => {
-    const data = await api.post<{ user: User; token: string }>("/auth/login", { email, senha });
+    const data = await api.post<{ user: User; token: string }>("/auth/login", {
+      email,
+      senha,
+    });
     localStorage.setItem("token", data.token);
     setUser(data.user);
   };
 
   const signUp = async (nome: string, email: string, senha: string) => {
-    const data = await api.post<{ user: User; token: string }>("/auth/register", { nome, email, senha });
+    const data = await api.post<{ user: User; token: string }>(
+      "/auth/register",
+      { nome, email, senha },
+    );
     localStorage.setItem("token", data.token);
     setUser(data.user);
   };
@@ -66,6 +79,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth deve ser usado dentro de AuthProvider");
+  if (!context)
+    throw new Error("useAuth deve ser usado dentro de AuthProvider");
   return context;
 }

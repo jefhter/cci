@@ -7,9 +7,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Plus, Pencil, Trash2, Search, Users } from "lucide-react";
 
 interface Aluno {
@@ -22,7 +40,14 @@ interface Aluno {
   observacoes: string | null;
 }
 
-const emptyForm = { nome: "", email: "", telefone: "", ra: "", data_nascimento: "", observacoes: "" };
+const emptyForm = {
+  nome: "",
+  email: "",
+  telefone: "",
+  ra: "",
+  data_nascimento: "",
+  observacoes: "",
+};
 
 export default function AlunosPage() {
   const [alunos, setAlunos] = useState<Aluno[]>([]);
@@ -31,13 +56,23 @@ export default function AlunosPage() {
   const [editId, setEditId] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
-  const load = () => api.get<Aluno[]>("/alunos").then(setAlunos).catch(() => toast.error("Erro ao carregar alunos"));
+  const load = () =>
+    api
+      .get<Aluno[]>("/alunos")
+      .then(setAlunos)
+      .catch(() => toast.error("Erro ao carregar alunos"));
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    load();
+  }, []);
 
   const filtered = alunos.filter((a) => {
     const q = search.toLowerCase();
-    return a.nome.toLowerCase().includes(q) || a.email?.toLowerCase().includes(q) || a.ra?.toLowerCase().includes(q);
+    return (
+      a.nome.toLowerCase().includes(q) ||
+      a.email?.toLowerCase().includes(q) ||
+      a.ra?.toLowerCase().includes(q)
+    );
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,7 +108,12 @@ export default function AlunosPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Tem certeza que deseja remover este aluno? Todas as matrículas e presenças serão apagadas.")) return;
+    if (
+      !confirm(
+        "Tem certeza que deseja remover este aluno? Todas as matrículas e presenças serão apagadas.",
+      )
+    )
+      return;
     try {
       await api.delete(`/alunos/${id}`);
       toast.success("Aluno removido");
@@ -94,7 +134,9 @@ export default function AlunosPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold">Alunos</h1>
-          <p className="text-muted-foreground">Gerencie os alunos cadastrados no sistema</p>
+          <p className="text-muted-foreground">
+            Gerencie os alunos cadastrados no sistema
+          </p>
         </div>
         <Button onClick={openNew}>
           <Plus className="h-4 w-4 mr-2" />
@@ -103,38 +145,73 @@ export default function AlunosPage() {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{editId ? "Editar aluno" : "Novo aluno"}</DialogTitle>
+              <DialogTitle>
+                {editId ? "Editar aluno" : "Novo aluno"}
+              </DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label>Nome *</Label>
-                <Input value={form.nome} onChange={(e) => setForm({ ...form, nome: e.target.value })} required minLength={2} />
+                <Input
+                  value={form.nome}
+                  onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                  required
+                  minLength={2}
+                />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>E-mail</Label>
-                  <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                  <Input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label>Telefone</Label>
-                  <Input value={form.telefone} onChange={(e) => setForm({ ...form, telefone: e.target.value })} />
+                  <Input
+                    value={form.telefone}
+                    onChange={(e) =>
+                      setForm({ ...form, telefone: e.target.value })
+                    }
+                  />
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>RA / Matrícula</Label>
-                  <Input value={form.ra} onChange={(e) => setForm({ ...form, ra: e.target.value })} />
+                  <Label>Escola</Label>
+                  <Input
+                    value={form.ra}
+                    onChange={(e) => setForm({ ...form, ra: e.target.value })}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label>Data de nascimento</Label>
-                  <Input type="date" value={form.data_nascimento} onChange={(e) => setForm({ ...form, data_nascimento: e.target.value })} />
+                  <Input
+                    type="date"
+                    value={form.data_nascimento}
+                    onChange={(e) =>
+                      setForm({ ...form, data_nascimento: e.target.value })
+                    }
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label>Observações</Label>
-                <Textarea value={form.observacoes} onChange={(e) => setForm({ ...form, observacoes: e.target.value })} maxLength={1000} />
+                <Textarea
+                  value={form.observacoes}
+                  onChange={(e) =>
+                    setForm({ ...form, observacoes: e.target.value })
+                  }
+                  maxLength={1000}
+                />
               </div>
-              <Button type="submit" className="w-full">{editId ? "Salvar" : "Cadastrar"}</Button>
+              <Button type="submit" className="w-full">
+                {editId ? "Salvar" : "Cadastrar"}
+              </Button>
             </form>
           </DialogContent>
         </Dialog>
@@ -145,9 +222,16 @@ export default function AlunosPage() {
           <div className="flex items-center gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Buscar por nome, email ou RA..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
+              <Input
+                placeholder="Buscar por nome, email ou Escola..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9"
+              />
             </div>
-            <span className="text-sm text-muted-foreground whitespace-nowrap">{filtered.length} aluno(s)</span>
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
+              {filtered.length} aluno(s)
+            </span>
           </div>
         </CardHeader>
         <CardContent>
@@ -177,10 +261,18 @@ export default function AlunosPage() {
                     <TableCell>{aluno.ra || "—"}</TableCell>
                     <TableCell>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" onClick={() => handleEdit(aluno)}>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleEdit(aluno)}
+                        >
                           <Pencil className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleDelete(aluno.id)}>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleDelete(aluno.id)}
+                        >
                           <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
                       </div>

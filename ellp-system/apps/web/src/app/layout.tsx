@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Oficina ELLP",
-  description: "Sistema de gestao de oficinas ELLP - UTFPR",
+  title: "ELLP — Sistema de Controle de Oficinas",
+  description:
+    "Plataforma de gestão de oficinas, alunos, tutores e presença do projeto de extensão ELLP da UTFPR.",
 };
 
 export default function RootLayout({
@@ -19,7 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="pt-BR"
+      className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col font-sans">
         <Providers>{children}</Providers>
       </body>
